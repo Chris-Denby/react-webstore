@@ -1,6 +1,7 @@
 import {React, useContext} from "react";
 import { CartContext } from "../contexts/cart-context";
-import "../checkout-item/checkout-item.styles.scss"
+import { CheckoutItemContainer, ImageContainer, Label, Arrow, QuantityContainer, RemoveButton, Image, Quantity } from "./checkout-item.styles";
+
 
 const CheckoutItem = ({item})=> {
 
@@ -20,22 +21,25 @@ const CheckoutItem = ({item})=> {
     }
 
     return(
-        <div className="checkout-item-container">
+        <CheckoutItemContainer>
 
-            <div className="image-container">
-                <img src={imageUrl} alt={name}/>
-            </div>
-            <span className="name">{name}</span>
-            <span className="quantity">
-                <div className="arrow" onClick={decrementHandler}>{"-"}</div>
-                <span className="value">{quantity}</span>
-                <div className="arrow" onClick={incrementHandler}>{"+"}</div> 
-            </span>
+            <ImageContainer>
+                <Image src={imageUrl} alt={name}/>
+            </ImageContainer>
 
-            <span className="price">${price * quantity}</span>
+            <Label>{name}</Label>
 
-            <div className="remove-button" onClick={deleteHandler}>X</div>
-        </div>
+            <QuantityContainer>
+                <Arrow onClick={decrementHandler}>{"-"}</Arrow>
+                <Quantity>{quantity}</Quantity>
+                <Arrow onClick={incrementHandler}>{"+"}</Arrow> 
+            </QuantityContainer>
+
+            <Label>${price * quantity}</Label>
+
+            <RemoveButton onClick={deleteHandler}>X</RemoveButton>
+
+        </CheckoutItemContainer>
     )
 }
 

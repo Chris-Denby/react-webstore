@@ -1,24 +1,20 @@
-import {React, useContext, useEffect} from "react";
-import Category from '../categories/category-component'
-import './directory-component.styles.scss'
+import {React, useContext} from "react";
 import { CategoriesContext } from "../contexts/categories-context";
+import DirectoryItem from "../directory-item/directory-item-component.js";
+import { DirectoryContainer } from "./directory-component.styles";
 
 const Directory = ()=> {
 
   const {categories} = useContext(CategoriesContext)
 
-  useEffect(()=>{
-    console.log(categories)
-  },[categories]);
-
     return(
-      <div className="directory-container">
+      <DirectoryContainer>
         {categories.map((category)=>{
           return(
-            <Category item={category} key={category.id}></Category>
+            <DirectoryItem item={category} key={category.id}></DirectoryItem>
           )   
         })}
-      </div>
+      </DirectoryContainer>
     )
 }
 

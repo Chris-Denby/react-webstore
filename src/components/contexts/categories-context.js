@@ -1,12 +1,8 @@
 import { createContext, useState, useEffect } from "react";
- 
+import {fetchAllCategories, fetchProductsByCategory} from "../../utils/back-end.utils"
+
 //actual value to access
-export const CategoriesContext = createContext(
-    // {
-    //     categories: [],
-    //     setCategories: ()=> null
-    // }
-);  
+export const CategoriesContext = createContext();  
 
 //a provider wrapper to render the child components
 export const CategoriesProvider = ({children}) => {
@@ -16,9 +12,7 @@ export const CategoriesProvider = ({children}) => {
     const value = {categories, setCategories}
 
     useEffect(()=>{
-        fetch("http://localhost:8080/products/",{method:"GET"})
-        .then(response => response.json())
-        .then(response => setCategories(response))
+        fetchAllCategories().then(result=>setCategories(result))
       },[]);
       
 

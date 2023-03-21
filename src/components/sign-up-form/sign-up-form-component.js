@@ -1,8 +1,8 @@
-import {React, useState, useContext, useEffect} from "react";
+import {React, useState} from "react";
 import { createAuthUserFromForm, createUserDocFromAuth } from "../../utils/firebase/firebase.utils";
 import InputComponent from "../form-input/form-input-component";
-import './sign-up-form-component.styles.scss'
 import Button from "../button/button-component";
+import { SignUpContainer } from "./sign-up-form-component.styles";
 
 const defaultFormState = {
     displayName: '',
@@ -49,7 +49,7 @@ const SignUpForm = ()=> {
     }
     
     return(
-        <div className="sign-up-container">
+        <SignUpContainer>
             <h2>Dont have an account?</h2>
             <span>Sign up with email and password</span >
 
@@ -97,7 +97,7 @@ const SignUpForm = ()=> {
                 <Button type='submit'>Submit</Button>
             </form>
 
-        </div>
+        </SignUpContainer>
     )
 }
 

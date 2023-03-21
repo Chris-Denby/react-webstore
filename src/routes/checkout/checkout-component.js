@@ -1,8 +1,7 @@
 import {React, useContext, useEffect, useState} from "react";
 import CheckoutItem from "../../components/checkout-item/checkout-item-component";
 import { CartContext } from "../../components/contexts/cart-context";
-import "../checkout/checkout-component.styles.scss"
-
+import { Total, HeaderBlock, CheckoutContainer, CheckoutHeader } from "./checkout-component.styles";
 const Checkout = ()=> {
 
     const [cartTotal, setCartTotal] = useState(0);
@@ -21,19 +20,20 @@ const Checkout = ()=> {
 
     
     return (
-        <div className="checkout-container">
-            <div className="checkout-header">
-                <div className="header-block"><span>Description</span></div>
-                <div className="header-block"><span>Quantity</span></div>
-                <div className="header-block"><span>Price</span></div>
-                <div className="header-block"><span>Remove</span></div>
-            </div>
+        <CheckoutContainer>
+            <CheckoutHeader>
+                <HeaderBlock><span>Image</span></HeaderBlock>
+                <HeaderBlock><span>Description</span></HeaderBlock>
+                <HeaderBlock><span>Quantity</span></HeaderBlock>
+                <HeaderBlock><span>Price</span></HeaderBlock>
+                <HeaderBlock><span>Remove</span></HeaderBlock>
+            </CheckoutHeader>
             {cartItems.map((item)=>(
                  <CheckoutItem key={item.id} item={item}/>
             ))}
             {/* iterate through list to build checkout items */}
-            <span className="total">Total: ${cartTotal}</span>
-        </div>
+            <Total>Total: ${cartTotal}</Total>
+        </CheckoutContainer>
     )
 }
 
